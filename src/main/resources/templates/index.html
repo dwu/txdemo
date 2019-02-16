@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+	<title>TX Demo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h2>Actions</h2>
+	<ul>
+		<li><a href="/toMq">Send Message to MQ</a></li>
+		<li><a href="/toDb">Write data to DB</a></li>
+		<li><a href="/shouldWorkEveryTime">Send Message to MQ &amp; Write data to DB (should work every time)</a></li>
+		<li><a href="/shouldFailEveryTime">Send Message to MQ &amp; Write data to DB (should fail every time)</a></li>
+		<li><a href="/shouldFailEverySecondTime">Send Message to MQ &amp; Write data to DB (should fail every second time)</a></li>
+	</ul>
+
+	<h2>Queue Status</h2>
+	Metadata:
+	<ul>
+		<li>Queue Depth: <span th:text="${queuedepth}"></span></li>
+	</ul>
+	Messages:
+	<ul>
+		<li th:each="msg : ${messages}"><span th:text="${msg}"></span></li>
+	</ul>
+	
+	<h2>Database Status</h2>
+	Metadata:
+	<ul>
+		<li>Number of records: <span th:text="${numrecords}"></span></li>
+	</ul>
+	
+	Records:
+	<ul>
+		<li th:each="rec : ${records}"><span th:text="${rec}"></span></li>
+	</ul>
+	
+</body>
+</html>
